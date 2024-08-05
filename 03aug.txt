@@ -1,0 +1,45 @@
+Reactjs -fackbook 
+ frontend  javascript library for building UI. 
+instagram 
+
+jQuery - javascript library  -> jQuery Plugin 
+AJAX 
+
+Angular - Framework 
+
+library -  collection of functions 
+Framework - collection of libraries
+
+Why Reactjs - 
+1. SPA (single Page Application) - index.html 
+2. components - basic building block of code for specific task.
+    function or class 
+    .js or .jsx file -> import and export 
+    returns html and javascript (JSX)
+    code resuablility 
+
+function fun(){
+    return "hello"
+}
+fun()
+
+function Fun(){
+    return <h1>Hello</h1>
+    return React.createElement("h1","","hello")
+}
+<Fun></Fun> or <Fun/>
+
+1. all tags should have closing. 
+2. html tags small letters 
+3. component name should be pascal 
+
+
+3. virtual DOM -  copy of REAL DOM
+REAL DOM - Browser
+React create copy of real DOM 
+react does all the changes in virtual dom first and once all the changes are done then patch them in real DOM
+
+4. React fiber -   
+
+=============================================================================
+vite tool  -  HMR (Hot module Replacement)
