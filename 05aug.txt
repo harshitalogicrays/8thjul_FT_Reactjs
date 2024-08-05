@@ -1,0 +1,10 @@
+props and events 
+
+
+Fragment - 
+<React.Fragment></React.Fragment>
+
+import {Fragment} from 'react'
+<Fragment></Fragment>
+
+<></> => shorthand of Fragment
