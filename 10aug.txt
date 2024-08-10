@@ -1,0 +1,46 @@
+props and events 
+
+<h1 id="10010" name="jkjet"></h1>
+
+props - properties 
+Parent to child 
+child can access props and props are read only
+<Propsdemoinfun username="" mobile=""></Propsdemoinfun>
+
+
+Conditional rendering -
+1. if else 
+    const Fun=(props)=>{
+        if(props.isActive){return (<h1></h1>)}
+        else {return (jsx)}
+    }
+
+2. javascript variable- 
+ const Fun=()=>{
+    let result
+        if(){result =  (jsx)}
+        else {result = (jsx)}
+    return (<>{result}</>)
+    }
+
+
+3. ternary operator - ?:
+4. short circuit operator (&&) simple if 
+
+
+list rendering - map()
+key props 
+events -
+
+before 16v -> functional comopnents - stateless  (variable not allowed)
+              class comopnents - stateful (variable allowed)
+functional comopnents  - React 16v hooks (pure functions with some specific functionality)
+built in  - useState , useEffect, useCallback, useMemo , useReducer, useRef, useContext etc.
+custom
+
+
+useState -  variable declaration 
+====================================================================
+forms 
+list rendering 
+routing 
