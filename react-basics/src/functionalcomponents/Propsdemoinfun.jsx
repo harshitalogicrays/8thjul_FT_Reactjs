@@ -14,7 +14,7 @@ import React, { Fragment } from 'react'
 // export default Propsdemoinfun
 
 
-const Propsdemoinfun = ({username,mobile,isActive,children}) => {
+const Propsdemoinfun = ({username='',mobile,isActive,children}) => {
   return (
     <>
         <h1>Props</h1>
@@ -24,7 +24,7 @@ const Propsdemoinfun = ({username,mobile,isActive,children}) => {
         {/* <h3>{children}</h3> */}
         {/* {children[0]} */}
 
-        {children.map((item,i)=><Fragment key={i}>item= {item}</Fragment>)}
+        {children?.map((item,i)=><Fragment key={i}>item= {item}</Fragment>)}
     </>
   )
 }
