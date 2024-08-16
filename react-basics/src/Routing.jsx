@@ -12,6 +12,9 @@ import { About } from "./classcomopnents/About";
 import { PageNotFound } from "./functionalcomponents/PageNotFound";
 import Register from "./functionalcomponents/Register";
 import FormValidations from "./functionalcomponents/FormValidations";
+import ReactBootstrap from "./functionalcomponents/ReactBootstrap";
+import UsesCustomcomp from "./functionalcomponents/UsesCustomcomp";
+import ListRendering from "./functionalcomponents/ListRendering";
 
 const Routing = () => {
   return (
@@ -26,6 +29,9 @@ const Routing = () => {
           <Route path="funstate" element={<Stateinfundemo />}></Route>
           <Route path="funform" element={<Register />}></Route>
           <Route path="funformvalidation" element={<FormValidations />}></Route>
+          <Route path="funreactbs" element={<ReactBootstrap />}></Route>
+          <Route path="funcustomcomp" element={<UsesCustomcomp />}></Route>
+          <Route path="funlistrendering" element={<ListRendering />}></Route>
 
 
           <Route path="classfirst" element={<Firstclasscomp />}></Route>
