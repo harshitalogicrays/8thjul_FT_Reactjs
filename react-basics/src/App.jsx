@@ -1,4 +1,3 @@
-import './App.css'
 import React from 'react'
 import Firstfuncomp from './functionalcomponents/Firstfuncomp'
 import Firstclasscomp from './classcomopnents/Firstclasscomp'

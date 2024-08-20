@@ -11,7 +11,10 @@ export const Header = () => {
         {id:6,text:'Form Validation',link:'/funformvalidation'},
         {id:7,text:'reactbs ',link:'/funreactbs'}, 
         {id:8,text:'custom comp',link:'/funcustomcomp'},
-        {id:8,text:'list rendering',link:'/funlistrendering'},
+        {id:9,text:'list rendering',link:'/funlistrendering'},
+        {id:10,text:'Products',link:'/funproducts'},
+        {id:11,text:'react hook form',link:'/funrhf'},
+        {id:12,text:'Lifting the state up',link:'/funltsu'},
     ]
     
   return (

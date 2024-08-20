@@ -24,7 +24,7 @@ const Propsdemoinfun = ({username='',mobile,isActive,children}) => {
         {/* <h3>{children}</h3> */}
         {/* {children[0]} */}
 
-        {children?.map((item,i)=><Fragment key={i}>item= {item}</Fragment>)}
+        {/* {children?.map((item,i)=><Fragment key={i}>item= {item}</Fragment>)} */}
     </>
   )
 }

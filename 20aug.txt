@@ -1,0 +1,19 @@
+list rendering 
+
+form validations - 
+third party npm package - react hook form (html validations)
+
+formik library 
+
+=================================================================
+lifting the state up - 
+
+pass state directly from parent to child is not allowed , we can pass data as props 
+
+i want to change parent state from child component 
+
+===========================================================================
+useCallback
+useEffect 
+useRef 
+useMemo 
