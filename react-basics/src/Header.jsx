@@ -15,6 +15,7 @@ export const Header = () => {
         {id:10,text:'Products',link:'/funproducts'},
         {id:11,text:'react hook form',link:'/funrhf'},
         {id:12,text:'Lifting the state up',link:'/funltsu'},
+        {id:13,text:'useEffect,useCallback and useRef Hook Demo ',link:'/funecrhooks'},
     ]
     
   return (

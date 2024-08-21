@@ -1,0 +1,25 @@
+useCallback is a React Hook that lets you cache a function definition between re-renders.
+
+window object -
+location -> path,pathname,hostname, protocol,port , window.location.reload()
+history -> window.history.back(),forward() , go(2),go(-2)
+screen 
+scroll 
+web storage 
+timing 
+navigator -  cookieEnabled, onLine, language, geoLocation  
+window.navigator.clipboard.writeText(data)
+============================================================
+forms - 
+1. controlled component  - react manages it , using state and onChange handler
+                            useState
+2. uncontrolled component - DOM manages it. using ref 
+                            hold the reference of the element 
+                            ref returns a property - current 
+                            useRef 
+useState vs useRef 
+=======================================================
+useMemo Hook 
+
+class component -  state, setState, component life cycle methods , ref 
+========================================================================

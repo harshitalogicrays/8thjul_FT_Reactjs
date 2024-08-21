@@ -18,6 +18,7 @@ import ListRendering from "./functionalcomponents/ListRendering";
 import Products from "./functionalcomponents/Products";
 import ReactHookFormDemo from "./functionalcomponents/ReactHookFormDemo";
 import ParentCount from "./functionalcomponents/ParentCount";
+import Hookseffectcallbackref from "./functionalcomponents/Hookseffectcallbackref";
 
 const Routing = () => {
   return (
@@ -38,7 +39,7 @@ const Routing = () => {
           <Route path="funproducts" element={<Products />}></Route>
           <Route path="funrhf" element={<ReactHookFormDemo />}></Route>
           <Route path="funltsu" element={<ParentCount />}></Route>
-
+          <Route path="funecrhooks" element={<Hookseffectcallbackref />}></Route>
 
           <Route path="classfirst" element={<Firstclasscomp />}></Route>
         </Route>
