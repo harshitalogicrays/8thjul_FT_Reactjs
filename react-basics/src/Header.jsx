@@ -16,6 +16,13 @@ export const Header = () => {
         {id:11,text:'react hook form',link:'/funrhf'},
         {id:12,text:'Lifting the state up',link:'/funltsu'},
         {id:13,text:'useEffect,useCallback and useRef Hook Demo ',link:'/funecrhooks'},
+        {id:14,text:'useMemo Hook',link:'/funusememo'},
+    ]
+
+    let classlinks = [
+      {id:1,text:'First class comp',link:'/classfirst'}, 
+      {id:2,text:'props,state and event',link:'/classpes'}, 
+      {id:3,text:'ref',link:'/classref'}, 
     ]
     
   return (
@@ -60,8 +67,16 @@ export const Header = () => {
             class Components
           </a>
           <ul className="dropdown-menu">
-            <li><a className="dropdown-item" href="#">first comp</a></li>
-            <li><hr className="dropdown-divider"/></li>
+          {classlinks.map((item,i)=><Fragment key={item.id}>
+                <li>
+                    <NavLink 
+                      className={({ isActive}) =>
+                        isActive ? " dropdown-item text-danger bg-warning" : "dropdown-item"
+                      }
+                    to={item.link}>{item.text}</NavLink>
+                    </li>
+               { i != classlinks.length-1 && <li ><hr className="dropdown-divider"/></li>} 
+            </Fragment>)}
           </ul>
         </li>
       </ul>

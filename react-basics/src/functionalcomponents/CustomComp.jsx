@@ -1,7 +1,7 @@
 import React from 'react'
 
 const CustomComp = ({type="button",children="button",class1="btn-primary",click,...r}) => {
-    console.log(r)
+    // console.log(r)
   return (
    <>
     <button type={type} 

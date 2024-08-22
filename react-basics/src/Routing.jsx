@@ -19,6 +19,9 @@ import Products from "./functionalcomponents/Products";
 import ReactHookFormDemo from "./functionalcomponents/ReactHookFormDemo";
 import ParentCount from "./functionalcomponents/ParentCount";
 import Hookseffectcallbackref from "./functionalcomponents/Hookseffectcallbackref";
+import UseMemoHook from "./functionalcomponents/UseMemoHook";
+import PropsEventandstate from "./classcomopnents/PropsEventandstate";
+import RefinClass from "./classcomopnents/RefinClass";
 
 const Routing = () => {
   return (
@@ -40,8 +43,13 @@ const Routing = () => {
           <Route path="funrhf" element={<ReactHookFormDemo />}></Route>
           <Route path="funltsu" element={<ParentCount />}></Route>
           <Route path="funecrhooks" element={<Hookseffectcallbackref />}></Route>
+          <Route path="funusememo" element={<UseMemoHook />}></Route>
+
+
 
           <Route path="classfirst" element={<Firstclasscomp />}></Route>
+          <Route path="classpes" element={<PropsEventandstate username="Harsh" isActive={true}/>}></Route>
+          <Route path="classref" element={<RefinClass />}></Route>
         </Route>
 
         <Route path="*" element={<PageNotFound/>}/>
