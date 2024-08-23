@@ -1,0 +1,8 @@
+Life cycle methods -
+1. mounting phase 
+2. updating phase 
+3. unmounting phase 
+4. error handling (error boundary)
+
+Pure component 
+HOC 

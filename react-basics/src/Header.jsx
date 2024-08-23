@@ -22,7 +22,8 @@ export const Header = () => {
     let classlinks = [
       {id:1,text:'First class comp',link:'/classfirst'}, 
       {id:2,text:'props,state and event',link:'/classpes'}, 
-      {id:3,text:'ref',link:'/classref'}, 
+      {id:3,text:'ref',link:'/classref'},
+      {id:4,text:'Life Cycle Methods',link:'/classlifecycle'},  
     ]
     
   return (

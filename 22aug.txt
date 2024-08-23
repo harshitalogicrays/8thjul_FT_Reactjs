@@ -3,4 +3,6 @@ useMemo hook -  useMemo is a React Hook that lets you cache the result of a calc
 forwardRef 
 life cycle methods 
 pure component
+HOC 
+
 

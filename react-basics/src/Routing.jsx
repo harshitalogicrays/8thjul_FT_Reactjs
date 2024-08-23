@@ -22,6 +22,7 @@ import Hookseffectcallbackref from "./functionalcomponents/Hookseffectcallbackre
 import UseMemoHook from "./functionalcomponents/UseMemoHook";
 import PropsEventandstate from "./classcomopnents/PropsEventandstate";
 import RefinClass from "./classcomopnents/RefinClass";
+import LifeCycleMethodsDemo from "./classcomopnents/LifeCycleMethodsDemo";
 
 const Routing = () => {
   return (
@@ -50,6 +51,7 @@ const Routing = () => {
           <Route path="classfirst" element={<Firstclasscomp />}></Route>
           <Route path="classpes" element={<PropsEventandstate username="Harsh" isActive={true}/>}></Route>
           <Route path="classref" element={<RefinClass />}></Route>
+          <Route path="classlifecycle" element={<LifeCycleMethodsDemo location="india"/>}></Route>
         </Route>
 
         <Route path="*" element={<PageNotFound/>}/>
