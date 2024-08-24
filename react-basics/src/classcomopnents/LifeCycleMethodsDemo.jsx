@@ -9,7 +9,7 @@ export default class LifeCycleMethodsDemo extends Component {
     }
     static getDerivedStateFromProps(nextProps,prevState){
         console.log("getDerivedStateFromProps called" )
-        if(nextProps.location != prevState)
+        if(nextProps.location != prevState.location)
         {
             return {location:nextProps.location,data:null}
         }
@@ -27,14 +27,33 @@ export default class LifeCycleMethodsDemo extends Component {
         .then((res)=>{
                 res.json().then((d)=>{
                     console.log(d)
-                  this.setState({data:d})
+                  this.setState({data:d}) 
                 })
         })
         .catch((error)=>{ this.setState({error:"Failed to get weather data"})})
     }
 
+    shouldComponentUpdate(nextProps,nextState){
+      console.log("shouldComponentUpdate called" )
+      return nextState.data != this.data
+      }
+
+    componentDidUpdate(prevProps,prevState){
+      console.log("componentDidUpdate called" )
+      if(prevState.location != this.state.location){
+        this.fetchWeatherData()
+      }
+    }
+
+    componentWillUnmount(){
+      console.log("componentWillUnmount called" )
+      clearInterval(this.weatherUpdate)
+    }
   render() {
     console.log("render called")
+    if(this.state.location !='india'){
+      throw new Error('something went wrong')
+    }
     return (
      <>
         {this.state.error && <p>{this.state.error}</p>}

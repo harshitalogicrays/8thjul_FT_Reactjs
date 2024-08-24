@@ -23,6 +23,9 @@ import UseMemoHook from "./functionalcomponents/UseMemoHook";
 import PropsEventandstate from "./classcomopnents/PropsEventandstate";
 import RefinClass from "./classcomopnents/RefinClass";
 import LifeCycleMethodsDemo from "./classcomopnents/LifeCycleMethodsDemo";
+import ErrorBoundray from "./classcomopnents/ErrorBoundray";
+import PureComponentDemoClass from "./classcomopnents/PureComponentDemoClass";
+import MainHOCComp from "./classcomopnents/MainHOCComp";
 
 const Routing = () => {
   return (
@@ -51,7 +54,13 @@ const Routing = () => {
           <Route path="classfirst" element={<Firstclasscomp />}></Route>
           <Route path="classpes" element={<PropsEventandstate username="Harsh" isActive={true}/>}></Route>
           <Route path="classref" element={<RefinClass />}></Route>
-          <Route path="classlifecycle" element={<LifeCycleMethodsDemo location="india"/>}></Route>
+          <Route path="classlifecycle" element={
+            <ErrorBoundray fallback="bad request">
+               <LifeCycleMethodsDemo location="india"/>
+            </ErrorBoundray>
+          }></Route>
+      <Route path="classpure" element={<PureComponentDemoClass />}></Route>
+      <Route path="classhoc" element={<MainHOCComp />}></Route>
         </Route>
 
         <Route path="*" element={<PageNotFound/>}/>

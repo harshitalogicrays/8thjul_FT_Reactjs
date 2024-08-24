@@ -1,0 +1,15 @@
+Life cycle methods -
+updating phase 
+unmounting phase 
+error handling
+
+pure Component - 
+
+class Abc extends Component {} // shouldComponentUpdate
+
+HOC - higher order Component 
+
+
+MainComp - > Post -> fetch  -> table 
+            users -> fetch  -> table 
+            todos -> fetch  -> table 

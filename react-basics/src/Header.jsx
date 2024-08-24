@@ -24,6 +24,8 @@ export const Header = () => {
       {id:2,text:'props,state and event',link:'/classpes'}, 
       {id:3,text:'ref',link:'/classref'},
       {id:4,text:'Life Cycle Methods',link:'/classlifecycle'},  
+      {id:5,text:'pure component class',link:'/classpure'},  
+      {id:6,text:'Higher Order Component',link:'/classhoc'}, 
     ]
     
   return (
