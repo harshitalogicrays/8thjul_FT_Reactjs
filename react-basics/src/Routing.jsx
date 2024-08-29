@@ -26,12 +26,13 @@ import LifeCycleMethodsDemo from "./classcomopnents/LifeCycleMethodsDemo";
 import ErrorBoundray from "./classcomopnents/ErrorBoundray";
 import PureComponentDemoClass from "./classcomopnents/PureComponentDemoClass";
 import MainHOCComp from "./classcomopnents/MainHOCComp";
+import Theme from "./Theme";
 
 const Routing = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route path="/" element={<Theme><App /></Theme>}>
            <Route path='' element={<Home/>}/>
            <Route path='about' element={<About/>}/>
           <Route path="funfirst" element={<Firstfuncomp />}></Route>

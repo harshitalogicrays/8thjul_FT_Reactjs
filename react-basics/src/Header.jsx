@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
+import ThemeBtn from './ThemeBtn'
 
 export const Header = () => {
     let funlinks = [ 
@@ -83,6 +84,8 @@ export const Header = () => {
           </ul>
         </li>
       </ul>
+          <ThemeBtn/>
+
     </div>
   </div>
 </nav>

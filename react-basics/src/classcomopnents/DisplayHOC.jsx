@@ -11,6 +11,8 @@ export default class DisplayHOC extends Component {
                     <tr>{this.props.data.columns.map((c)=> <th>{c}</th>  )}</tr>
                 </thead>
                 <tbody>
+                  {this.props.data.data.length==0 && 
+                  <tr><td colSpan={this.props.data.columns.length}>No Record Found</td></tr>}
                     {this.props.data.data.map((item,i)=>
                         <tr key={i}>
                             {this.props.data.columns.map((c)=>
