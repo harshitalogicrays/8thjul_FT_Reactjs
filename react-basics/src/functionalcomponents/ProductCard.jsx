@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Button, Card, Col} from 'react-bootstrap'
+
 const ProductCard = ({product}) => {
+
   return (
  <Col xs={3}>
       <Card>
-      <Card.Img variant="top" src={product.image} 
+      <Card.Img variant="top" src={product.images[0]} 
       height={170}/>
       <Card.Body>
 

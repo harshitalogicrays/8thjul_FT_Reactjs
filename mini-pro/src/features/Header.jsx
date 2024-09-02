@@ -1,7 +1,7 @@
 import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Header = () => {
     const navigation = [
@@ -38,28 +38,30 @@ const Header = () => {
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-                  <Link
+                  <NavLink
                     key={item.name}
                     to={item.href}
-                    className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-red-700 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium',
-                    )}
+                    className={({ isActive}) =>
+                     isActive ? "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" :'text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
+                    }
+              
                   >
                     {item.name}
-                  </Link>
+                  </NavLink>
                 ))}
               </div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <button
+            <Link to='/cart'
               type="button"
-              className="h-9  text-6xl relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="text-6xl relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
-              <ShoppingCartIcon className="h-6 w-6"/>
-
-            </button>
+              <ShoppingCartIcon className="h-9 w-9"/>
+              <span className="absolute -top-1 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
+      0
+    </span>
+            </Link>
 
             {/* Profile dropdown */}
             <Menu as="div" className="relative ml-3">
@@ -104,13 +106,11 @@ const Header = () => {
           {navigation.map((item) => (
             <DisclosureButton
               key={item.name}
-              as="a"
-              href={item.href}
-              aria-current={item.current ? 'page' : undefined}
-              className={classNames(
-                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium',
-              )}
+              as={NavLink}
+              to={item.href}
+              className={({ isActive}) =>
+                isActive ? "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" :'text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
+               }
             >
               {item.name}
             </DisclosureButton>
