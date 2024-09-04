@@ -2,8 +2,10 @@ import React from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, NavLink } from 'react-router-dom'
+import { useMycontext } from '../CartContext'
 
 const Header = () => {
+  const data=useMycontext()
     const navigation = [
         { name: 'Home', href: '/', current: true },
         { name: 'About', href: '/about', current: false },
@@ -59,7 +61,7 @@ const Header = () => {
             >
               <ShoppingCartIcon className="h-9 w-9"/>
               <span className="absolute -top-1 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
-      0
+     {data.cartItems.length}
     </span>
             </Link>
 
