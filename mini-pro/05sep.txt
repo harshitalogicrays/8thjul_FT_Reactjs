@@ -1,0 +1,38 @@
+fetch  - 
+get method 
+fetch("url").then(res=>{
+    return res.json().then(data=>{})
+}).catch(err=>{})
+
+fetch("url",{
+    method:"POST",
+    headers:{'content-type":'application/type"},
+    body:JSON.stringify(user)
+})
+
+
+axios  - npm i axios 
+
+axios.get("url").then((res)=>{})
+axios.post("url",user)
+
+
+url/:id -> request param
+url?name=value&name=value -> request querystring 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

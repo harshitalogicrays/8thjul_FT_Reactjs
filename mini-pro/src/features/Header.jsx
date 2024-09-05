@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useMycontext } from '../CartContext'
+import { toast } from 'react-toastify'
+import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
 
 const Header = () => {
+  const [username,setUsername]=useState("Guest")
+  const redirect =useNavigate()
   const data=useMycontext()
     const navigation = [
         { name: 'Home', href: '/', current: true },
@@ -16,6 +20,13 @@ const Header = () => {
         return classes.filter(Boolean).join(' ')
       }
       
+      let handleLogout=()=>{
+        if(sessionStorage.getItem("8thjulreact") != null){
+          sessionStorage.removeItem("8thjulreact")
+          toast.info("loggedOut Successfully")
+          redirect('/')
+        }
+      }
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="px-4">
@@ -57,15 +68,29 @@ const Header = () => {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Link to='/cart'
               type="button"
-              className="text-6xl relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              className="text-6xl me-2   relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             >
               <ShoppingCartIcon className="h-9 w-9"/>
               <span className="absolute -top-1 -right-2 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
      {data.cartItems.length}
     </span>
             </Link>
+            <ShowOnLogout>
+                <NavLink to='/register'
+                    className={({ isActive}) =>
+                     isActive ? "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" :'text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
+                    } > Register </NavLink>
 
+               <NavLink to='/login'
+                    className={({ isActive}) =>
+                     isActive ? "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" :'text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
+                    } > Login </NavLink> 
+            </ShowOnLogout>
             {/* Profile dropdown */}
+            <ShowOnLogin>
+            <a  className=
+                   'text-gray-300 hover:bg-red-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'
+                    > Welcome {username} </a>
             <Menu as="div" className="relative ml-3">
               <div>
                 <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -93,12 +118,13 @@ const Header = () => {
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                  <button className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100" onClick={handleLogout}>
                     Sign out
-                  </a>
+                  </button>
                 </MenuItem>
               </MenuItems>
             </Menu>
+            </ShowOnLogin>
           </div>
         </div>
       </div>
