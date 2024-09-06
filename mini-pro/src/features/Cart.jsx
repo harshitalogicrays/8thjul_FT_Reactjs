@@ -1,13 +1,28 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { useMycontext } from '../CartContext';
+import { toast } from 'react-toastify';
 const Cart = () => {
+  const redirect = useNavigate()
+  let location = useLocation();
+  console.log(location)
   const data = useMycontext()
   const {cartItems,total,increase,decrease,removeFromCart,emptyCart,calculate_total} = data
    useEffect(()=>{
       calculate_total() 
    },[cartItems])
+
+   let handleCheckout=()=>{
+    if(sessionStorage.getItem("8thjulreact") != null){
+      toast.success("order placed successfully")
+      redirect('/')
+    }
+      else{
+        redirect('/login')
+      } 
+ 
+   }
       return (
         <div className="max-w-7xl mx-auto p-8 bg-gray-100">
       <h1 className="text-4xl font-bold mb-8 text-gray-800">Shopping Cart</h1>
@@ -73,11 +88,9 @@ const Cart = () => {
                <button className="mt-8 w-50 bg-red-600 text-white p-3 rounded-lg text-lg font-medium hover:bg-red-700 me-2 transition duration-200" onClick={()=>emptyCart()}>
                 Empty Cart
               </button>
-            <Link to="/checkout">
-              <button className="mt-8 w-50 bg-indigo-600 text-white p-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition duration-200">
+                 <button className="mt-8 w-50 bg-indigo-600 text-white p-3 rounded-lg text-lg font-medium hover:bg-indigo-700 transition duration-200" onClick={handleCheckout}>
                 Proceed to Checkout
               </button>
-            </Link>
             </div>
             
           </div>

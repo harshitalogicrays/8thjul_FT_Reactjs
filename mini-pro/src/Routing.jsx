@@ -7,6 +7,7 @@ import Cart from "./features/Cart";
 import CartContext from "./CartContext";
 import Register from "./features/Register";
 import Login from "./features/Login";
+import { Protected } from "./features/hiddenlinks";
 
 const router = createBrowserRouter([
     {path:'/', element:<CartContext><App/></CartContext>,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
@@ -16,10 +16,13 @@ const Header = () => {
         { name: 'Products', href: '/products', current: false },
       ]
       
-      function classNames(...classes) {
-        return classes.filter(Boolean).join(' ')
+      useEffect(()=>{
+      if(sessionStorage.getItem("8thjulreact") != null){
+        let obj = JSON.parse(sessionStorage.getItem("8thjulreact"))
+        setUsername(obj.name)
       }
-      
+      },[sessionStorage.getItem("8thjulreact")])
+  
       let handleLogout=()=>{
         if(sessionStorage.getItem("8thjulreact") != null){
           sessionStorage.removeItem("8thjulreact")

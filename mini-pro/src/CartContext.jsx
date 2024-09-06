@@ -8,6 +8,7 @@ const CartContext = ({children}) => {
         const [total,setTotal]=useState(0)
         const addtocart=(product)=>{
             // alert(JSON.stringify(product))
+            
             let itemIndex =  cartItems.findIndex(item=>item.id==product.id)
             if(itemIndex == -1){
                 setCartItems([...cartItems,{...product,qty:1}])
