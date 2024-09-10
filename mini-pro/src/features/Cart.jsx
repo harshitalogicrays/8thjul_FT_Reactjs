@@ -15,13 +15,31 @@ const Cart = () => {
 
    let handleCheckout=()=>{
     if(sessionStorage.getItem("8thjulreact") != null){
+      saveorder()
+   
+    }
+      else{
+        redirect('/login',{state:{from:location.pathname}})
+      } 
+ 
+   }
+
+   let saveorder=async()=>{
+    try{
+      let data =  JSON.parse(sessionStorage.getItem("8thjulreact"))
+      let obj = {cartItems,total,email:data.email,orderStatus:"Pending",orderDate:new Date().toLocaleDateString(),orderTime:new Date().toLocaleTimeString(),createdAt:Date.now()}
+        await fetch(`${import.meta.env.VITE_BASE_URL}/orders`,{
+          method:"POST",
+          headers:{'content-type':'application/json'},
+          body:JSON.stringify(obj)
+        })
+      emptyCart()
       toast.success("order placed successfully")
       redirect('/')
     }
-      else{
-        redirect('/login')
-      } 
- 
+    catch(err){toast.error(err.message)}
+
+  
    }
       return (
         <div className="max-w-7xl mx-auto p-8 bg-gray-100">

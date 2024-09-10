@@ -20,7 +20,7 @@ const ProductItems = ({products}) => {
      const endOffset = itemOffset + itemsPerPage;//4
   setCurrentItems(products.slice(itemOffset, endOffset))//0 to 3
   setPageCount( Math.ceil(products.length / itemsPerPage)) 
-  },[itemOffset])
+  },[itemOffset,products])
 
   const handlePageClick = (event) => {//2(index 1)
     const newOffset = (event.selected * itemsPerPage) % products.length;//4

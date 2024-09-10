@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const Login = () => {
   const navigate= useNavigate()
+  const location = useLocation()
+  // console.log("login",location)
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -27,10 +29,14 @@ const Login = () => {
           else if(data[0].password != user.password)
             toast.error("invalid credentails")
           else {
-            let obj = {isLoggedIn:true,email:user.email,name:data[0].name,role:data[0].role}
+            let obj = {isLoggedIn:true,email:user.email,name:data[0].name,role:data[0].role,
+              userId:data[0].id
+            }
             sessionStorage.setItem("8thjulreact",JSON.stringify(obj))
             toast.success("loggeded successfully")
-            navigate('/') 
+
+            const redirectTo = location.state?.from || '/'
+            navigate(redirectTo) 
           }
         
         }
