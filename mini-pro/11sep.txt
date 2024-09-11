@@ -1,0 +1,10 @@
+loader  - 
+redux 
+@reduxjs/toolkit  - application level state mgmt tool for js application
+
+store 
+
+redux  vs context 
+single source of truth 
+
+web storage - browser 

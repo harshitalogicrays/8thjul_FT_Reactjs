@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -12,6 +12,23 @@ const Profile = () => {
         confirmPassword: "",
       });
     
+useEffect(()=>{
+  if(id){
+    getDataByID()
+  }
+  else {setUser({name: "", email: "", password: "", confirmPassword: "",})}
+},[id])
+
+let getDataByID=async()=>{
+  try{
+    let res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${id}`)
+    let data = await res.json()
+    setUser(data)
+  }
+  catch(err){toast.error(err.message)}
+}
+
+
       const handleChange = (e) => {
         setUser({
           ...user,
@@ -21,6 +38,17 @@ const Profile = () => {
     
       const handleSubmit = async(e) => {
         e.preventDefault();
+        try{
+           await fetch(`${import.meta.env.VITE_BASE_URL}/users/${id}`,{
+            method:"PUT",
+            headers:{'content-type':'application/json'},
+            body:JSON.stringify({...user,createdAt:user.createdAt,editedAt:new Date()})
+          })
+          toast.success("profile updated")
+        }
+        catch(err){
+          toast.error(err.message)
+        }
       };
     
   return (
@@ -45,7 +73,7 @@ const Profile = () => {
         <label className="block text-gray-700">Email</label>
         <input
           type="email"
-          name="email"
+          name="email" readOnly
           value={user.email}
           onChange={handleChange}
           className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
@@ -74,11 +102,22 @@ const Profile = () => {
           required
         />
       </div>
+      <div>
+        <label className="block text-gray-700"></label>
+        <input
+          type="password"
+          name="confirmPassword"
+          value={user.confirmPassword}
+          onChange={handleChange}
+          className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+          required
+        />
+      </div>
       <button
         type="submit"
         className="w-full py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600"
       >
-        Register
+        Update Profile
       </button>
     </form>
   </div>

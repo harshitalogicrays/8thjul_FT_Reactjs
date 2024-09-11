@@ -11,15 +11,39 @@ import { Protected } from "./features/hiddenlinks";
 import { fetchData } from "./fetchData";
 import PageNotFound from "./PageNotFound";
 import Profile from "./features/Profile";
+import { Suspense } from "react";
+import Loader from "./features/Loader";
+import React from 'react'
+// const router = createBrowserRouter([
+//     {path:'/', element:<CartContext><App/></CartContext>,
+//         children:[
+//             {path:'' , element:<Home/>,
+//                 loader:fetchData,
+//                 errorElement:<PageNotFound/>
+//             },
+//             {path:'about' , element:<About/>},
+//             {path:'products' , element:<Products/>},
+//             {path:'cart' , element:<Cart/>},
+//             {path:'register',element:<Register/>},
+//             {path:'login',element:<Login/>},
+//             {path:'profile/:id',element:<Protected><Profile/></Protected>}
+
+//         ]
+//     },
+//     {path:"*",element:<PageNotFound/>}
+// ])
+
+const Home1 =  React.lazy(()=>import('./pages/Home'))
+const About1 =  React.lazy(()=>import('./pages/About'))
 
 const router = createBrowserRouter([
     {path:'/', element:<CartContext><App/></CartContext>,
         children:[
-            {path:'' , element:<Home/>,
+            {path:'' , element:<Suspense fallback={<Loader/>}><Home1/></Suspense>,
                 loader:fetchData,
                 errorElement:<PageNotFound/>
             },
-            {path:'about' , element:<About/>},
+            {path:'about' , element:<Suspense fallback={<h1>Loading....</h1>}><About1/></Suspense>},
             {path:'products' , element:<Products/>},
             {path:'cart' , element:<Cart/>},
             {path:'register',element:<Register/>},

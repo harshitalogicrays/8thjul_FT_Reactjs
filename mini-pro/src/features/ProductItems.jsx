@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useContext } from 'react'
 import { myContext, useMycontext } from '../CartContext'
 import ReactPaginate from 'react-paginate'
+import Loader from './Loader'
 const ProductItems = ({products}) => {
   const mydata =useMycontext()
   // console.log(mydata)
@@ -28,7 +29,7 @@ const ProductItems = ({products}) => {
   };
   return (
   <>
-  {products.length==0 && <h1>No Product Found</h1>}
+  {products.length==0 && <Loader/>}
    <div className="bg-white" >
       <div className="mx-auto max-w-2xl px-4 lg:max-w-7xl lg:px-8">
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">

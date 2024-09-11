@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
   <h1>Home Page</h1>
-  <ProductItems products={data.products}/>
+  <ProductItems products={data.products}/>  
   </>
   )
 }
