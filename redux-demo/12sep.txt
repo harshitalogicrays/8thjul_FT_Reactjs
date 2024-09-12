@@ -1,0 +1,35 @@
+redux - predictable state container for javascript apps.
+
+single source of truth (only one provider - root comp)
+
+store - where application level state stored
+
+store
+action (event)
+reducer (pure functions)
+state - data 
+
+unidirectional
+
+view --------------------> action -----------> reducers-------------------> store (state)
+                           dispatch 
+
+store -----------------> view 
+        select 
+
+
+cake shop - 
+customer 
+shopkeeper 
+cake shelf 
+cakes / muffins / cupcakes /chocolates / cookies / bread  etc. 
+
+customer -------BUY_CAKE--------------------> shopkeeper -----------------------> cake shelf (Cake )
+view            (action dispatch )         reducer (pure function)              (store)
+                                            BUY_CAKE(),SELL_CAKE()
+            
+cakes shelf ---------------------> customer
+store            select             view 
+
+dealer -------SELL_CAKE--------------------> shopkeeper -----------------------> cake shelf (Cake )
+view                (action dispatch )         reducer (pure function)              (store)
