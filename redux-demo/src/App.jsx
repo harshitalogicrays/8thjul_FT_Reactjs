@@ -1,15 +1,19 @@
-import { useDispatch } from 'react-redux'
-import './App.css'
-import { ADD_USER } from './redux/userSlice'
+import AddUser from './features/AddUser'
+import ViewUser from './features/ViewUser'
 
 function App() {
-  const dispatch = useDispatch()
-  let handleAdd=()=>{
-    dispatch(ADD_USER("harshita"))
-  }
     return (
       <>
-        <button type="button" onClick={handleAdd}>Add User</button>
+       <div className="container shadow p-3 mt-5">
+        <div className="row">
+          <div className="col">
+            <AddUser/>
+          </div>
+          <div className="col">
+            <ViewUser/>
+          </div>
+        </div>
+       </div>
       </>
     )
 }
