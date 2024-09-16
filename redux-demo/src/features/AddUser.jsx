@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { ADD_USER } from '../redux/userSlice'
+import { addUserToAPI } from '../redux/userSlice'
 
 const AddUser = () => {
     let initialState ={username:'',email:'',password:'',cpassword:''}
@@ -9,9 +9,20 @@ const AddUser = () => {
     let handleChange=(e)=>{
           setUser((prevState)=>({...prevState ,[e.target.name]:e.target.value}))
     }
-    let handleSubmit=(e)=>{
+    let handleSubmit=async(e)=>{
       e.preventDefault()
-        dispatch(ADD_USER(user))
+      // try{
+      //   await fetch("https://66e7f13cb17821a9d9daa59b.mockapi.io/users",{
+      //     method:"POST",
+      //     headers:{'content-type':'application/json'},
+      //     body:JSON.stringify(user)
+      //   })
+      // }
+      // catch(error){
+      //     console.log(error.message)
+      // }
+        // dispatch(ADD_USER(user))
+        dispatch(addUserToAPI(user))
         setUser({...initialState})
     }
   return (

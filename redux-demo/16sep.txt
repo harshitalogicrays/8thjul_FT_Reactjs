@@ -1,0 +1,23 @@
+API - 
+1. custom API middleware 
+2. asyncThunk
+3. RTK (redux toolkit query)
+4. redux saga 
+
+req -----> middleware ---------->   server 
+                       next()
+
+
+function fun(a){
+    return function(b){
+        return function(c){
+
+        }
+    }
+}
+
+fun(2)(4)(6)
+
+let fun=(a)=>(b)=>(c)=>{
+    
+}
