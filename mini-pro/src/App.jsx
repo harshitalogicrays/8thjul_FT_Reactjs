@@ -1,9 +1,11 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useLoaderData } from "react-router-dom"
 import Header from "./features/Header"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  const data = useLoaderData()
+  // console.log(data)
   return (
   <>
    <ToastContainer
@@ -18,7 +20,7 @@ function App() {
         pauseOnHover={false}
         theme="colored"
         />
-    <Header/>
+    <Header products={data.products}/>
     <Outlet/>
   </>
   )

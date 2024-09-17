@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { Bars3Icon, BellIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon, MagnifyingGlassIcon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useMycontext } from '../CartContext'
 import { toast } from 'react-toastify'
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
+import { useDispatch } from 'react-redux'
+import { FILTER_BY_SEARCH } from '../redux/filterSlice'
 
-const Header = () => {
+const Header = ({products=[]}) => {
   const [username,setUsername]=useState("Guest")
   const redirect =useNavigate()
   const data=useMycontext()
@@ -29,6 +31,13 @@ const Header = () => {
           redirect('/')
         }
       }
+
+    //search
+    let [search,setSearch]=useState('')
+    const dispatch = useDispatch()
+    useEffect(()=>{
+       dispatch(FILTER_BY_SEARCH({products,search}))
+    },[search])
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="px-4">
@@ -67,7 +76,19 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          {/* search */}
+          <div className="ml-6 hidden sm:flex items-center">
+              <form className="flex items-center relative">
+                <input
+                  type="text"
+                  className="bg-gray-700 text-gray-300 rounded-md pl-3 pr-10 py-2 focus:outline-none"
+                  placeholder="Search..." value={search} onChange={(e)=>setSearch(e.target.value)}
+                />
+                <MagnifyingGlassIcon className="h-5 w-5 absolute right-2 text-gray-400 pointer-events-none" />
+              </form>
+            </div>
+            {/* ////// */}
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <Link to='/cart'
               type="button"
               className="text-6xl me-2   relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"

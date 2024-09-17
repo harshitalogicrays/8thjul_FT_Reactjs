@@ -37,11 +37,11 @@ const Home1 =  React.lazy(()=>import('./pages/Home'))
 const About1 =  React.lazy(()=>import('./pages/About'))
 
 const router = createBrowserRouter([
-    {path:'/', element:<CartContext><App/></CartContext>,
-        children:[
-            {path:'' , element:<Suspense fallback={<Loader/>}><Home1/></Suspense>,
+    {path:'/', element:<CartContext><App/></CartContext>, 
                 loader:fetchData,
-                errorElement:<PageNotFound/>
+                errorElement:<PageNotFound/>,
+        children:[
+            {path:'' , element:<Suspense fallback={<Loader/>}><Home1/></Suspense> 
             },
             {path:'about' , element:<Suspense fallback={<h1>Loading....</h1>}><About1/></Suspense>},
             {path:'products' , element:<Products/>},
