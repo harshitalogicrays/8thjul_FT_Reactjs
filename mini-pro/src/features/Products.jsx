@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import ProductItems from './ProductItems'
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
-import { FILTER_BY_PRICE, selectFilter, selectPrice, selectSearch } from '../redux/filterSlice'
+import { FILTER_BY_CATEGROY, FILTER_BY_PRICE, selectCategory, selectFilter, selectPrice, selectSearch } from '../redux/filterSlice'
 
 import {
   Dialog,
@@ -40,6 +40,7 @@ const Products = () => {
     const filterProducts =useSelector(selectFilter)
     const searchvalue = useSelector(selectSearch)
     const pricevalue = useSelector(selectPrice)
+    const catvalue = useSelector(selectCategory)
     console.log(pricevalue,filterProducts)
 
     const dispatch=useDispatch()
@@ -48,58 +49,15 @@ const Products = () => {
       { name: 'Price: Low to High', value:'ltoh'},
       { name: 'Price: High to Low', value:"htol"},
     ]
-    const subCategories = [
-      { name: 'Totes', href: '#' },
-      { name: 'Backpacks', href: '#' },
-      { name: 'Travel Bags', href: '#' },
-      { name: 'Hip Bags', href: '#' },
-      { name: 'Laptop Sleeves', href: '#' },
-    ]
-    const filters = [
-      {
-        id: 'color',
-        name: 'Color',
-        options: [
-          { value: 'white', label: 'White', checked: false },
-          { value: 'beige', label: 'Beige', checked: false },
-          { value: 'blue', label: 'Blue', checked: true },
-          { value: 'brown', label: 'Brown', checked: false },
-          { value: 'green', label: 'Green', checked: false },
-          { value: 'purple', label: 'Purple', checked: false },
-        ],
-      },
-      {
-        id: 'category',
-        name: 'Category',
-        options: [
-          { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-          { value: 'sale', label: 'Sale', checked: false },
-          { value: 'travel', label: 'Travel', checked: true },
-          { value: 'organization', label: 'Organization', checked: false },
-          { value: 'accessories', label: 'Accessories', checked: false },
-        ],
-      },
-      {
-        id: 'size',
-        name: 'Size',
-        options: [
-          { value: '2l', label: '2L', checked: false },
-          { value: '6l', label: '6L', checked: false },
-          { value: '12l', label: '12L', checked: false },
-          { value: '18l', label: '18L', checked: false },
-          { value: '20l', label: '20L', checked: false },
-          { value: '40l', label: '40L', checked: true },
-        ],
-      },
-    ]
-    
-    function classNames(...classes) {
-      return classes.filter(Boolean).join(' ')
-    }
-    const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+
+    const categories = Array.from(new Set(products.map((product)=>product.category)))
+    const brands = Array.from(new Set(products.map((product)=>product.brand)))
+ 
+ 
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   return (
    <>
-   <div className="bg-white">
+   <div>
       <div>
         {/* Mobile filter dialog */}
         <Dialog open={mobileFiltersOpen} onClose={setMobileFiltersOpen} className="relative z-40 lg:hidden">
@@ -127,52 +85,25 @@ const Products = () => {
 
               {/* Filters */}
               <form className="mt-4 border-t border-gray-200">
-                <h3 className="sr-only">Categories</h3>
+                <h3  className="text-2xl mb-4 font-bold">Categories</h3>
                 <ul role="list" className="px-2 py-3 font-medium text-gray-900">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href} className="block px-2 py-3">
-                        {category.name}
-                      </a>
+                  {categories.map((category,i) => (
+                    <li key={i} className='cursor-pointer' >
+                      <p className="block px-2 py-3">
+                        {category}
+                      </p>
                     </li>
                   ))}
                 </ul>
 
-                {filters.map((section) => (
-                  <Disclosure key={section.id} as="div" className="border-t border-gray-200 px-4 py-6">
-                    <h3 className="-mx-2 -my-3 flow-root">
-                      <DisclosureButton className="group flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-                        <span className="font-medium text-gray-900">{section.name}</span>
-                        <span className="ml-6 flex items-center">
-                          <PlusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:hidden" />
-                          <MinusIcon aria-hidden="true" className="h-5 w-5 [.group:not([data-open])_&]:hidden" />
-                        </span>
-                      </DisclosureButton>
-                    </h3>
-                    <DisclosurePanel className="pt-6">
-                      <div className="space-y-6">
-                        {section.options.map((option, optionIdx) => (
-                          <div key={option.value} className="flex items-center">
-                            <input
-                              defaultValue={option.value}
-                              defaultChecked={option.checked}
-                              id={`filter-mobile-${section.id}-${optionIdx}`}
-                              name={`${section.id}[]`}
-                              type="checkbox"
-                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                            />
-                            <label
-                              htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
-                              className="ml-3 min-w-0 flex-1 text-gray-500"
-                            >
-                              {option.label}
-                            </label>
-                          </div>
-                        ))}
-                      </div>
-                    </DisclosurePanel>
-                  </Disclosure>
-                ))}
+                <h3  className="text-2xl mb-4 font-bold">Brands</h3>
+                <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+                  {brands.map((brand,i) => (
+                    <li key={i} className='cursor-pointer'>
+                      <p >{brand}</p>
+                    </li>
+                  ))}
+                </ul>
               </form>
             </DialogPanel>
           </div>
@@ -236,52 +167,28 @@ const Products = () => {
             <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
               {/* Filters */}
               <form className="hidden lg:block">
-                <h3 className="sr-only">Categories</h3>
+                <h3  className="text-2xl mb-4 font-bold">Categories</h3>
                 <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
-                  {subCategories.map((category) => (
-                    <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
+                  {categories.map((category,i) => (
+                    <li key={i} className='cursor-pointer' onClick={()=>dispatch(FILTER_BY_CATEGROY({products,category}))}>
+                      <p >{category}</p>
                     </li>
                   ))}
                 </ul>
 
-                {filters.map((section) => (
-                  <Disclosure key={section.id} as="div" className="border-b border-gray-200 py-6">
-                    <h3 className="-my-3 flow-root">
-                      <DisclosureButton className="group flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                        <span className="font-medium text-gray-900">{section.name}</span>
-                        <span className="ml-6 flex items-center">
-                          <PlusIcon aria-hidden="true" className="h-5 w-5 group-data-[open]:hidden" />
-                          <MinusIcon aria-hidden="true" className="h-5 w-5 [.group:not([data-open])_&]:hidden" />
-                        </span>
-                      </DisclosureButton>
-                    </h3>
-                    <DisclosurePanel className="pt-6">
-                      <div className="space-y-4">
-                        {section.options.map((option, optionIdx) => (
-                          <div key={option.value} className="flex items-center">
-                            <input
-                              defaultValue={option.value}
-                              defaultChecked={option.checked}
-                              id={`filter-${section.id}-${optionIdx}`}
-                              name={`${section.id}[]`}
-                              type="checkbox"
-                              className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                            />
-                            <label htmlFor={`filter-${section.id}-${optionIdx}`} className="ml-3 text-sm text-gray-600">
-                              {option.label}
-                            </label>
-                          </div>
-                        ))}
-                      </div>
-                    </DisclosurePanel>
-                  </Disclosure>
-                ))}
+                <h3 className="text-2xl mb-4 font-bold">Brands</h3>
+                <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900">
+                  {brands.map((brand,i) => (
+                    <li key={i} className='cursor-pointer'>
+                      <p >{brand}</p>
+                    </li>
+                  ))}
+                </ul>
               </form>
 
               {/* Product grid */}
               <div className="lg:col-span-3">
-              {(searchvalue=='' ||pricevalue=='') ? <ProductItems products={products}></ProductItems> :
+              {(searchvalue=='' && pricevalue=='' && catvalue=='') ? <ProductItems products={products}></ProductItems> :
                 <>
                     {filterProducts.length==0 ? <h1 className='text-center text-4xl font-bold mt-6'>No product found</h1> :
                       <ProductItems products={filterProducts}></ProductItems>

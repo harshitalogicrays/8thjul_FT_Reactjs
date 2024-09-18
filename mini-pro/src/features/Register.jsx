@@ -36,14 +36,14 @@ const Register = () => {
       };
     
       return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
+        <div className="flex justify-center items-center min-h-screen">
           <form
             onSubmit={handleSubmit}
-            className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md"
+            className="w-full max-w-md p-8 space-y-6rounded-lg shadow-md"
           >
             <h2 className="text-2xl font-bold text-center">Register</h2>
             <div>
-              <label className="block text-gray-700">Name</label>
+              <label className="block">Name</label>
               <input
                 type="text"
                 name="name"
@@ -54,7 +54,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700">Email</label>
+              <label className="block">Email</label>
               <input
                 type="email"
                 name="email"
@@ -65,7 +65,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700">Password</label>
+              <label className="block">Password</label>
               <input
                 type="password"
                 name="password"
@@ -76,7 +76,7 @@ const Register = () => {
               />
             </div>
             <div>
-              <label className="block text-gray-700">Confirm Password</label>
+              <label className="block">Confirm Password</label>
               <input
                 type="password"
                 name="confirmPassword"
@@ -88,7 +88,7 @@ const Register = () => {
             </div>
             <button
               type="submit"
-              className="w-full py-2 text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              className="w-full py-2 mt-3 bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-600"
             >
               Register
             </button>

@@ -14,6 +14,7 @@ import Profile from "./features/Profile";
 import { Suspense } from "react";
 import Loader from "./features/Loader";
 import React from 'react'
+import ThemeContext from "./features/ThemeContext";
 // const router = createBrowserRouter([
 //     {path:'/', element:<CartContext><App/></CartContext>,
 //         children:[
@@ -37,7 +38,7 @@ const Home1 =  React.lazy(()=>import('./pages/Home'))
 const About1 =  React.lazy(()=>import('./pages/About'))
 
 const router = createBrowserRouter([
-    {path:'/', element:<CartContext><App/></CartContext>, 
+    {path:'/', element:<ThemeContext><CartContext><App/></CartContext> </ThemeContext>, 
                 loader:fetchData,
                 errorElement:<PageNotFound/>,
         children:[

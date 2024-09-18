@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 import { ShowOnLogin, ShowOnLogout } from './hiddenlinks'
 import { useDispatch } from 'react-redux'
 import { FILTER_BY_SEARCH } from '../redux/filterSlice'
+import ThemeBtn from './ThemeBtn'
 
 const Header = ({products=[]}) => {
   const [username,setUsername]=useState("Guest")
@@ -76,6 +77,7 @@ const Header = ({products=[]}) => {
               </div>
             </div>
           </div>
+                <ThemeBtn/>
           {/* search */}
           <div className="ml-6 hidden sm:flex items-center">
               <form className="flex items-center relative">
